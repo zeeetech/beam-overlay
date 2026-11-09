@@ -19,9 +19,9 @@
     in
       # Select the highest available OTP version that doesn't exceed maxOtp
       if maxOtp >= 28
-      then pkgs.erlang_28
+      then pkgs.beam28Packages.erlang
       else if maxOtp >= 27
-      then pkgs.erlang_27
+      then pkgs.beam27Packages.erlang
       # OTP 26 was removed from nixpkgs; use the overlay's builder for legacy Elixir.
       else erlangOtpPackages."26";
 
