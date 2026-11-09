@@ -84,6 +84,10 @@ in {
     == "1.20.5"
     && builtins.head (pkgs.lib.splitString "." elixir120WithOtp29.beamScope.erlang.version) == "29"
     && elixir120WithOtp29.beamScope.elixir.otpVersion == elixir120WithOtp29.beamScope.erlang.version;
+  defaultElixir120UsesOtp29 =
+    builtins.head (pkgs.lib.splitString "." beam.elixir."1.20.5".otpVersion) == "29";
+  defaultElixir119UsesOtp28 =
+    builtins.head (pkgs.lib.splitString "." beam.elixir."1.19.7".otpVersion) == "28";
   erlangOnlyHasNoElixir = pinned.beamScope.elixir != null && erlangOnly.beamScope.elixir == null;
   erlangOnlySelectsRequestedOtp =
     builtins.head (pkgs.lib.splitString "." erlangOnly.beamScope.erlang.version) == "28";

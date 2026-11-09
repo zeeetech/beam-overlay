@@ -18,7 +18,9 @@
       maxOtp = lib.strings.toInt versionData.maxOtpVersion;
     in
       # Select the highest available OTP version that doesn't exceed maxOtp
-      if maxOtp >= 28
+      if maxOtp >= 29 && pkgs ? beam29Packages
+      then pkgs.beam29Packages.erlang
+      else if maxOtp >= 28
       then pkgs.erlang_28
       else if maxOtp >= 27
       then pkgs.erlang_27
